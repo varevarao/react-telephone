@@ -1,4 +1,4 @@
-<p align="center"><a href="https://react-telephone.joris.re/"><img alt="react-telephone - Demo" src="https://github.com/jorisre/react-telephone/raw/main/examples/public/cover.gif"/></a></p>
+<p align="center"><a href="https://react-telephone.joris.re/"><img alt="react-telephone - Demo" src="https://github.com/varevarao/react-telephone/raw/main/examples/public/cover.gif"/></a></p>
 
 <p align="center">
   <a href="https://bundlephobia.com/result?p=react-telephone">
@@ -46,19 +46,19 @@ Tiniest react input phone component (auto formating included)
 ## Installation
 
 ```sh
-yarn add react-telephone
+yarn add @vrao/react-telephone
 ```
 
 or
 
 ```sh
-npm i react-telephone
+npm i @vrao/react-telephone
 ```
 
 ## Usage
 
 ```tsx
-import { Phone } from 'react-telephone';
+import { Phone } from '@vrao/react-telephone';
 
 export default function MyComponent() {
   return (

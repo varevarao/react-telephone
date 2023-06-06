@@ -25,3 +25,5 @@ coverage
 *.sln
 *.sw?
 .yarn
+
+.env

@@ -1,7 +1,7 @@
 {
   "name": "@vrao/react-telephone",
   "description": "☎️ Tiniest react input phone component (auto formating included)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "source": "./src/index.tsx",
   "typings": "dist/index.d.ts",

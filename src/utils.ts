@@ -1,9 +1,11 @@
 import countries from './countries';
 
-export type Country = typeof countries[number];
+const defaultCountry = countries.find((c) => c[2] === 'us') as Country;
+
+export type Country = (typeof countries)[number];
 
 export const getCountryByIso = (code: Country[2]) =>
-  countries.find((c) => c[2] === code) as Country;
+  (countries.find((c) => c[2] === code) ?? defaultCountry) as Country;
 
 export const removeMask = (value: string) => value.replace(/\D/g, '');
 export const getMaskDigit = (value: string, mask?: string) => {
@@ -42,16 +44,19 @@ export const splitPhoneNumber = (value: string): PhoneNumber | undefined => {
   const dial = removeMask(value).substring(0, 6);
 
   // search by iso2 country code and area
-  const [country] = countries.filter(
+  const applicableCountries: Country[] = countries.filter(
     (c) =>
       dial.startsWith(c[3]) &&
-      (c[6] ? c[6].some((a:string) => dial.startsWith(`${c[3]}${a}`)) : true)
+      (c[6] ? c[6].some((a: string) => dial.startsWith(`${c[3]}${a}`)) : true)
   );
+
+  const [country] =
+    applicableCountries.length > 0 ? applicableCountries : [defaultCountry];
 
   return {
     raw: value,
     country: country,
-    formatted: country ? applyMask(replaceDialCode(value, country[3], ''), country[4]) : value,
+    formatted: applyMask(replaceDialCode(value, country[3], ''), country[4]),
   };
 };
 
